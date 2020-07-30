@@ -8,7 +8,7 @@ SECRET_KEY = '&a_#*fu&3^aw%z=sx5_dhka+3pbdhuh(up*a357f*d-kh&h^2p'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     # Django default
@@ -71,7 +71,7 @@ DATABASES = {
     }
 }
 
-connect('todos')
+connect('todos', 'mongodb+srv://yuanlin:411612@cluster0.wrbwz.gcp.mongodb.net')
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -106,7 +106,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8081',
-)
+CORS_ORIGIN_ALLOW_ALL = True
