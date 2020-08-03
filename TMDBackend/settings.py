@@ -11,31 +11,19 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
-    # Django default
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # Rest framwork
     'rest_framework',
     'rest_framework_mongoengine',
-
-    # Todos
-    'todos',
-
-    # CORS
     'corsheaders',
-
 ]
 
 MIDDLEWARE = [
-    # CORS
     'corsheaders.middleware.CorsMiddleware',
-
-    # Django default
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -65,29 +53,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'TMDBackend.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': '',
-    }
-}
+DATABASES = {'default': {'ENGINE': ''}}
 
-connect('todos', 'mongodb+srv://yuanlin:411612@cluster0.wrbwz.gcp.mongodb.net')
+connect('todos', host='mongodb+srv://yuanlin:411612@cluster0.wrbwz.gcp.mongodb.net', connect=False)
 
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
+AUTH_PASSWORD_VALIDATORS = []
 
 
 LANGUAGE_CODE = 'zh-Hant'
@@ -99,10 +70,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
 
