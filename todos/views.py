@@ -12,7 +12,32 @@ def todo_list(request):
     if request.method == 'GET':
         todos = Todo.objects.all()
         todos_serializer = TodoSerializer(todos, many=True)
-        return JsonResponse(todos_serializer.data, safe=False)
+
+        response_data = []
+        for todo in todos_serializer.data:
+
+            ddl_Y = todo['deadline'][0:4]
+            ddl_M = todo['deadline'][5:7]
+            ddl_D = todo['deadline'][8:10]
+            ddl_h = int(todo['deadline'][11:13]) + 8
+            ddl_m = int(todo['deadline'][14:16])
+
+            if ddl_h < 10:
+                ddl_h = "0" + str(ddl_h)
+            else:
+                ddl_h = str(ddl_h)
+
+            if ddl_m < 10:
+                ddl_m = "0" + str(ddl_m)
+            else:
+                ddl_m = str(ddl_m)
+
+            ddl_string = ddl_Y + "/" + ddl_M + "/" + ddl_D + " " + ddl_h + ":" + ddl_m
+
+            response_data.append(
+                dict(id=todo['id'], title=todo['title'], ddl=ddl_string))
+
+        return JsonResponse(response_data, safe=False)
 
     if request.method == 'POST':
         todo_data = JSONParser().parse(request)
