@@ -1,3 +1,6 @@
+from datetime import datetime, timezone
+
+import dateutil.parser
 from django.http.response import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -5,6 +8,8 @@ from rest_framework.parsers import JSONParser
 
 from todos.models import Todo
 from todos.serializers import TodoSerializer
+from utils.getStatus import getStatus
+from utils.getTimedeltaSec import getTimedeltaSec
 
 
 @api_view(['GET', 'POST', 'DELETE'])
@@ -34,8 +39,13 @@ def todo_list(request):
 
             ddl_string = ddl_Y + "/" + ddl_M + "/" + ddl_D + " " + ddl_h + ":" + ddl_m
 
+            timedelta = datetime.now(timezone.utc) - \
+                dateutil.parser.parse(todo['deadline'])
+
             response_data.append(
-                dict(id=todo['id'], title=todo['title'], ddl=ddl_string))
+                dict(title=todo['title'], ddl=ddl_string, status=getStatus(todo)))
+
+        response_data.sort(key=getTimedeltaSec, reverse=True)
 
         return JsonResponse(response_data, safe=False)
 
