@@ -43,7 +43,7 @@ def todo_list(request):
                 dateutil.parser.parse(todo['deadline'])
 
             response_data.append(
-                dict(title=todo['title'], ddl=ddl_string, status=getStatus(todo)))
+                dict(id=todo['id'], title=todo['title'], ddl=ddl_string, status=getStatus(todo)))
 
         response_data.sort(key=getTimedeltaSec, reverse=True)
 
