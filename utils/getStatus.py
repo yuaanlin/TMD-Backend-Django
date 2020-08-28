@@ -2,10 +2,12 @@ from datetime import datetime, timedelta, timezone
 
 import dateutil
 
+from todos.models import Todo
 
-def getStatus(todo):
-    left_time = dateutil.parser.parse(
-        todo['deadline']) - datetime.now(timezone.utc)
+
+def getStatus(todo: Todo):
+    left_time = todo.deadline.astimezone(
+        timezone.utc) - datetime.now(timezone.utc)
 
     if left_time < timedelta(seconds=0):
         return "EXPIRED"
