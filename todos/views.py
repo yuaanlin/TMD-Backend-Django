@@ -1,6 +1,4 @@
-from datetime import datetime, timezone
-
-import dateutil.parser
+import pytz
 from django.http.response import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -16,34 +14,17 @@ from utils.getTimedeltaSec import getTimedeltaSec
 def todo_list(request):
     if request.method == 'GET':
         todos = Todo.objects.all()
-        todos_serializer = TodoSerializer(todos, many=True)
 
         response_data = []
-        for todo in todos_serializer.data:
-
-            ddl_Y = todo['deadline'][0:4]
-            ddl_M = todo['deadline'][5:7]
-            ddl_D = todo['deadline'][8:10]
-            ddl_h = int(todo['deadline'][11:13]) + 8
-            ddl_m = int(todo['deadline'][14:16])
-
-            if ddl_h < 10:
-                ddl_h = "0" + str(ddl_h)
-            else:
-                ddl_h = str(ddl_h)
-
-            if ddl_m < 10:
-                ddl_m = "0" + str(ddl_m)
-            else:
-                ddl_m = str(ddl_m)
-
-            ddl_string = ddl_Y + "/" + ddl_M + "/" + ddl_D + " " + ddl_h + ":" + ddl_m
-
-            timedelta = datetime.now(timezone.utc) - \
-                dateutil.parser.parse(todo['deadline'])
+        for todo in todos:
+            ddl_string = pytz.timezone(
+                'Asia/Taipei').localize(todo.deadline).astimezone(
+                    pytz.utc).strftime("%Y/%m/%d %H:%M")
 
             response_data.append(
-                dict(id=todo['id'], title=todo['title'], ddl=ddl_string, status=getStatus(todo)))
+                dict(id=str(todo.id), title=todo.title,
+                     ddl=ddl_string, status=getStatus(todo)
+                     ))
 
         response_data.sort(key=getTimedeltaSec, reverse=True)
 
@@ -54,8 +35,11 @@ def todo_list(request):
         todo_serializer = TodoSerializer(data=todo_data)
         if todo_serializer.is_valid():
             todo_serializer.save()
-            return JsonResponse(todo_serializer.data, status=status.HTTP_201_CREATED)
-        return JsonResponse(todo_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse(todo_serializer.data,
+                                status=status.HTTP_201_CREATED)
+
+        return JsonResponse(todo_serializer.errors,
+                            status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == 'DELETE':
         count = Todo.objects.all().delete()
@@ -90,7 +74,9 @@ def todo_detail(request, todo_id):
         if todo_serializer.is_valid():
             todo_serializer.save()
             return JsonResponse(todo_serializer.data)
-        return JsonResponse(todo_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        return JsonResponse(todo_serializer.errors,
+                            status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == 'DELETE':
         todo.delete()
