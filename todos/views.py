@@ -1,3 +1,6 @@
+
+from datetime import timedelta
+
 import pytz
 from django.http.response import JsonResponse
 from rest_framework import status
@@ -17,9 +20,10 @@ def todo_list(request):
 
         response_data = []
         for todo in todos:
-            ddl_string = pytz.timezone(
-                'Asia/Taipei').localize(todo.deadline).astimezone(
-                    pytz.utc).strftime("%Y/%m/%d %H:%M")
+            ddl = (todo.deadline.astimezone(pytz.timezone('Asia/Taipei')) +
+                   timedelta(hours=8)).astimezone(pytz.timezone('Asia/Taipei'))
+
+            ddl_string = ddl.strftime("%Y/%m/%d %H:%M")
 
             response_data.append(
                 dict(id=str(todo.id), title=todo.title,
