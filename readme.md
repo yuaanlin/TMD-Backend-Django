@@ -8,13 +8,9 @@ TMD (Too Many Deadlines) 是浙江大学 2019 级计算机专业的学生林沅�
 
 大学生通常同时被作业、考试、学生组织等等的大量 deadlines 所弄的焦头烂额，因此我希望可以透过一个书桌上优雅的装饰品来在生活中协助大学生处理这样子的问题。TMD 的主体是三条由磨砂灯罩盖住的 LED 灯条，灯条在程序的控制下显示出不单调却也不会影响注意力的视觉效果。
 
-![TMD%20-%20%E7%89%A9%E8%81%94%E7%BD%91%20DDL%20%E6%8F%90%E7%A4%BA%E7%81%AF%20c8af7cf4fe124aaf861ee363b43ed9cc/red.jpg](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7704bd14-abab-4efb-b465-4b1a1dde8f4f/red.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200907%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200907T033727Z&X-Amz-Expires=86400&X-Amz-Signature=29c496c6140a089b6b9bf25b3d4481516e45706b967adf79b8e51a5e894242df&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22red.jpg%22)
-
-在 Deadline 只剩不到一天，灯会显示红色
-
-![TMD%20-%20%E7%89%A9%E8%81%94%E7%BD%91%20DDL%20%E6%8F%90%E7%A4%BA%E7%81%AF%20c8af7cf4fe124aaf861ee363b43ed9cc/green.jpg](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/baa5ae23-8eef-4348-b46b-116cf859459e/green.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200907%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200907T033745Z&X-Amz-Expires=86400&X-Amz-Signature=54ad8dbea0782081befb0fe209866b775315dee7a77f7e4606d1e4e95e8a5478&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22green.jpg%22)
-
-Deadline 还有超过一个星期，灯会显示绿色
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7704bd14-abab-4efb-b465-4b1a1dde8f4f/red.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200907%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200907T033727Z&X-Amz-Expires=86400&X-Amz-Signature=29c496c6140a089b6b9bf25b3d4481516e45706b967adf79b8e51a5e894242df&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22red.jpg%22"  width="450" />            |  <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/baa5ae23-8eef-4348-b46b-116cf859459e/green.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200907%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200907T033745Z&X-Amz-Expires=86400&X-Amz-Signature=54ad8dbea0782081befb0fe209866b775315dee7a77f7e4606d1e4e95e8a5478&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22green.jpg%22"  width="450" />
+:-------------------------:|:-------------------------:
+在 Deadline 只剩不到一天，灯会显示红色  |  Deadline 还有超过一个星期，灯会显示绿色
 
 ---
 
@@ -245,6 +241,10 @@ void State::setDisplayTodoIndex(int index) {
 ### 开发 Demo 用的 App
 
 最后为了拍摄作品影片，我决定开发一个简易的 App 用来对数据库的 DDL 做一些操作。在开发上我选用使用 Typescript 语言编写的 React Native 前端框架。同时，因为已经有了现成的后端服务以及完善的 API 接口，App 在开发起来非常高效。
+
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f049f4fa-662f-44ab-b976-f91ffd293465/iVBORw0KGgoAAAANSUhEUgAABS0AAAo4CAYAAAC8JoKAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIu-2_3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200907%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200907T040610Z&X-Amz-Expires=86400&X-Amz-Signature=39b09977b024295651de4d369a9da674541e40cb202fb5e54061103d3b21a625&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22iVBORw0KGgoAAAANSUhEUgAABS0AAAo4CAYAAAC8JoKAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIu-2_3.png%22"  width="300" /> | <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c145bc16-6278-4c88-9e59-4a324873d3ed/iVBORw0KGgoAAAANSUhEUgAABS0AAAo4CAYAAAC8JoKAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIu-2_2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200907%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200907T040648Z&X-Amz-Expires=86400&X-Amz-Signature=334a6b693e7f381d2c9609f7decffd94d9f04d057c9d302195e7c19f3f59e4f9&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22iVBORw0KGgoAAAANSUhEUgAABS0AAAo4CAYAAAC8JoKAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIu-2_2.png%22"  width="300" /> | <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/db0fca5d-00ff-4f15-bb15-4557373bc170/iVBORw0KGgoAAAANSUhEUgAABS0AAAo4CAYAAAC8JoKAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIu-2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200907%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200907T041243Z&X-Amz-Expires=86400&X-Amz-Signature=a8bd92b717748238c5d503e3bf4821b69f18a40468473fdeda5e8c6f9ec49937&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22iVBORw0KGgoAAAANSUhEUgAABS0AAAo4CAYAAAC8JoKAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIu-2.png%22"  width="300" />
+:-------------------------:|:-------------------------:|:-------------------------:
+TMD App 的 DDL 列表 | TMD App 可以刪除 DDL | TMD App 可以新增 DDL
 
 ## 实际使用情况
 
